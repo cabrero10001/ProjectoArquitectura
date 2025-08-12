@@ -1,7 +1,7 @@
-import { RegistroUsuario } from "../controllers/RegistroUsuario.js"
-import { LoginUsuario } from "../controllers/loginUsuario.js"
+import Login from "./loginUsuariosRouter.js"
+import Registro from "./RegistroUsuarioRouter.js"
 
 export {
-    RegistroUsuario,
-    LoginUsuario
+    Login,
+    Registro
 }
