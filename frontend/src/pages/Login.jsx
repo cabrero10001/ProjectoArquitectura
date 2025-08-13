@@ -8,7 +8,7 @@ export const Login = () => {
     const { user, setUser, setLogueado } = useUserContext();
 
     const [data, setData] = useState({
-        email: '',
+        userName: '',
         password: ''
     });
 

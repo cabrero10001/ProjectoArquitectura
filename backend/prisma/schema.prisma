@@ -9,11 +9,10 @@ datasource db {
 
 model User{
   id String @default(uuid())
-  primerNombre String
-  segundoNombre String
-  primerApellido String
-  segundoApellido String
+  Nombre String
+  Apellido String
   userName String
+  email String
   password String
   numeroDocumento String @id
 }
