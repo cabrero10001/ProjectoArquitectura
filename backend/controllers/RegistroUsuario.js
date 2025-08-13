@@ -16,11 +16,10 @@ export const RegistroUsuario = async (req, res) => {
             const contraseñaHasheada = await bcrypt.hash(data.password, 10)
             const EnvioFormulario = await prisma.user.create({
                     data:{
-                        primerNombre: data.primerNombre,
-                        segundoNombre: data.segundoNombre,
-                        primerApellido: data.primerApellido,
-                        segundoApellido: data.segundoApellido,
+                        Nombre: data.Nombre,
+                        Apellido: data.Apellido,
                         userName: data.userName,
+                        email: data.email,
                         password: contraseñaHasheada,
                         numeroDocumento: data.numeroDocumento
                     }

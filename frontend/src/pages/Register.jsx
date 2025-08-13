@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios'
 
 export const Register = () => {
 
@@ -7,11 +8,13 @@ export const Register = () => {
 
 
     const [data, setData] = useState({
-        name: '',
-        lastName: '',
+        Nombre: '',
+        Apellido: '',
+        userName: '',
         email: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        numeroDocumento: ''
     });
 
     const handleChange = (e) => {
@@ -25,30 +28,38 @@ export const Register = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            if(data.password == data.confirmPassword) {
-                const respuesta = await axios.post({/*Endpoint*/}, data);
-                if (respuesta.status == 200) {
-                console.log(data)
-                console.log("registro exitoso");
-                alert("SESION INICIADA");
-                nav("/login")
-            }
-            }
-
-            {/*CONFIGURAR EL CATCH*/}
-
-        } catch (error) {
-            if (error.response?.status == 404) {
-                alert("El correo no se encuentra registrado")
-                console.log("el usuario no existe")
-                console.log(data)
-            } else if (error.response?.status == 401) {
-                alert("La contraseña es incorrecta")
-                console.log("la contraseña es incorrecta")
-                console.log(data)
-            }
+            if (data.password === data.confirmPassword) {
+                const respuesta = await axios.post("http://localhost:3000/api/Registro", data);
             
+                if (respuesta.status === 200) {
+                    console.log(data);
+                    console.log("registro exitoso");
+                    alert("SESION INICIADA");
+                    nav("/login");
+                }
+            } else {
+                alert("Las contraseñas no coinciden");
+            }
+        
+        } catch (error) {
+            if (error.response?.status === 500) {
+                console.log(data);
+                console.log("El usuario ya fue registrado");
+                alert("El usuario ya fue registrado, redirigiendo a Inicio de sesion");
+                nav("/login");
+            } else if (error.response?.status === 404) {
+                alert("El correo no se encuentra registrado");
+                console.log("el usuario no existe");
+                console.log(data);
+            } else if (error.response?.status === 401) {
+                alert("La contraseña es incorrecta");
+                console.log("la contraseña es incorrecta");
+                console.log(data);
+            } else {
+                console.error("Error inesperado:", error);
+            }
         }
+
     }
 
     return (
@@ -72,15 +83,29 @@ export const Register = () => {
             <form onSubmit={handleSubmit} className="space-y-4 w-full">
             <input
                 type="text"
-                placeholder="Nombres"
+                placeholder="Nombre"
                 onChange={handleChange}
-                name="name"
+                name="Nombre"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
             <input
                 type="text"
-                placeholder="Apellidos"
-                name="lastName"
+                placeholder="Apellido"
+                name="Apellido"
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            <input
+                type="text"
+                placeholder="Numero de documento"
+                name="numeroDocumento"
+                onChange={handleChange}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+            />
+            <input
+                type="text"
+                placeholder="Nombre de Usuario"
+                name="userName"
                 onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />

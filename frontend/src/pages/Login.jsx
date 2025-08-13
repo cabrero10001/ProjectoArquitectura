@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../Context/ContextUser";
+import axios from "axios";
 
 export const Login = () => {
     
@@ -23,7 +24,7 @@ export const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            const respuesta = await axios.post({/*Endpoint*/}, data);
+            const respuesta = await axios.post("http://localhost:3000/api/Login", data);
             if (respuesta.status == 200) {
                 setLogueado(true)
                 setUser(respuesta.data.user)
@@ -34,7 +35,7 @@ export const Login = () => {
             }
         } catch (error) {
             if (error.response?.status == 404) {
-                alert("El correo no se encuentra registrado")
+                alert("El usuario no se encuentra registrado")
                 console.log("el usuario no existe")
                 console.log(data)
             } else if (error.response?.status == 401) {
@@ -66,10 +67,10 @@ export const Login = () => {
 
             <form onSubmit={handleSubmit} className="space-y-4 w-full">
             <input
-                type="email"
-                placeholder="Correo electrónico"
+                type="text"
+                placeholder="Nombre de usuario"
                 onChange={handleChange}
-                name="email"
+                name="userName"
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
             />
             <input
