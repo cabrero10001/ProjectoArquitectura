@@ -8,11 +8,18 @@ datasource db {
 }
 
 model User{
-  id String @default(uuid())
+  idUser String @default(uuid())
   Nombre String
   Apellido String
   userName String
   email String
   password String
   numeroDocumento String @id
+}
+
+model notes{
+  id String @id @default(uuid())
+  title String
+  content String
+  createdAt DateTime @default(now())
 }

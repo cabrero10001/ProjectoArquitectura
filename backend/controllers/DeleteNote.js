@@ -2,15 +2,17 @@ import { PrismaClient } from "@prisma/client";
 
 const prisma = new PrismaClient();
 
-export const DeleteUser = async (req, res) => {
-    const data = req.body;
+export const DeleteNotes = async (req, res) => {
     try {
-        const Delete = await prisma.user.delete({
-            where: {numeroDocumento: data.numeroDocumento}
+        const { id } = req.params;
+
+        await prisma.notes.delete({
+            where: { id }
         });
-        console.log("Usuario eliminado");
+        res.status(204).send(); // 204 No Content
+        console.log("Nota eliminada exitosamente");
         return res.status(200).json({
-            mensaje: "Datos de usuario eliminado",
+            mensaje: "Nota eliminada exitosamente",
             resultado: Delete
             
         });

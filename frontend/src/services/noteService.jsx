@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // ** ESPACIO PARA TUS ENDPOINTS **
 // Define la URL base de tu API aquí
-const API_BASE_URL = 'http://localhost:3000/api/';
+const API_BASE_URL = 'http://localhost:3000/api';
 
 /**
  * Obtiene todas las notas.
@@ -11,8 +11,7 @@ const API_BASE_URL = 'http://localhost:3000/api/';
  */
 export const getNotes = async () => {
   try {
-    const response = await axios.get(`${API_BASE_URL}/notes`);
-    console.log(response);
+    const response = await axios.get(`${API_BASE_URL}/getNote`);
     return response.data;
   } catch (error) {
     console.error('Error al obtener notas:', error);
@@ -27,7 +26,7 @@ export const getNotes = async () => {
  */
 export const createNote = async (noteData) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/notes`, noteData);
+    const response = await axios.post(`${API_BASE_URL}/CreateNote`, noteData);
     return response.data;
   } catch (error) {
     console.error('Error al crear nota:', error);
@@ -43,7 +42,7 @@ export const createNote = async (noteData) => {
  */
 export const updateNote = async (id, noteData) => {
   try {
-    const response = await axios.put(`${API_BASE_URL}/notes/${id}`, noteData);
+    const response = await axios.put(`${API_BASE_URL}/UpdateNotes/${id}`, noteData);
     return response.data;
   } catch (error) {
     console.error('Error al actualizar nota:', error);
@@ -58,7 +57,7 @@ export const updateNote = async (id, noteData) => {
  */
 export const deleteNote = async (id) => {
   try {
-    await axios.delete(`${API_BASE_URL}/notes/${id}`);
+    await axios.delete(`${API_BASE_URL}/DeleteNotes/${id}`);
   } catch (error) {
     console.error('Error al eliminar nota:', error);
     throw error;

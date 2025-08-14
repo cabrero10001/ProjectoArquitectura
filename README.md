@@ -1,5 +1,5 @@
 ﻿## Login_ArquitecuraSoftware
-**Descripcion:** Este proyecto se realizo con la intencion de tener un control y registro de entradas y salidas de un personal y tener un registro basado en un calendario.
+**Descripcion:** 
 ## Tecnologias Usadas
 - 🔧 **Backend:** Node.js, Javascript
 - 💾 **Bases de datos:** Mysql + prisma ORM
