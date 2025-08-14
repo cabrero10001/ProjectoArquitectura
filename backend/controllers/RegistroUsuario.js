@@ -11,7 +11,7 @@ export const RegistroUsuario = async (req, res) => {
         })
         if (verificacion.length > 0) {
             console.log("El usuario ya esta registrado en la base de datos")
-            return res.status(500).json({mensaje : "El usuario ya existe en la base de datos"})
+            return res.status(409).json({mensaje : "El usuario ya existe en la base de datos"})
         } else {
             const contraseñaHasheada = await bcrypt.hash(data.password, 10)
             const EnvioFormulario = await prisma.user.create({

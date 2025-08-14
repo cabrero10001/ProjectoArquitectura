@@ -31,7 +31,7 @@ export const Login = () => {
                 console.log(data)
                 console.log("logueo exitoso");
                 alert("SESION INICIADA")
-                nav("/")
+                nav("/notes")
             }
         } catch (error) {
             if (error.response?.status == 404) {

@@ -3,7 +3,7 @@ import axios from 'axios';
 
 // ** ESPACIO PARA TUS ENDPOINTS **
 // Define la URL base de tu API aquí
-const API_BASE_URL = 'https://tu-api.com/v1';
+const API_BASE_URL = 'http://localhost:3000/api/';
 
 /**
  * Obtiene todas las notas.
