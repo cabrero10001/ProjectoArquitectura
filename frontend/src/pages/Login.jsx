@@ -52,16 +52,16 @@ export const Login = () => {
       {/* Lado izquierdo con imagen */}
         <div className="hidden md:block w-2/3">
         <img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=1200&q=80"
+            src="/src/assets/fondo.jpg"
             alt="Fondo"
             className="w-full h-full object-cover"
         />
         </div>
 
       {/* Lado derecho con formulario */}
-        <div className="w-full md:w-1/3 flex items-center justify-center bg-white">
+        <div className="w-full md:w-1/3 flex items-center justify-center bg-white shadow-2xl/20">
         <div className="flex flex-col items-center max-w-md w-full p-8">
-            <h1 className=" text-2xl font-bold mb-6 text-gray-800">
+            <h1 className=" text-4xl font-Newake mb-6 text-gray-800">
             Inicia sesión
             </h1>
 
@@ -71,18 +71,18 @@ export const Login = () => {
                 placeholder="Nombre de usuario"
                 onChange={handleChange}
                 name="userName"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 outline-none"
             />
             <input
                 type="password"
                 placeholder="Contraseña"
                 name="password"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 outline-none"
             />
             <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition"
+                className="w-full bg-gradient-to-br from-blue-600 to-blue-800 hover:scale-105 text-white py-2 rounded-lg font-semibold transition duration-400"
             >
                 Entrar
             </button>
@@ -93,10 +93,6 @@ export const Login = () => {
             <a onClick={() => {nav("/register")} } className="text-blue-600 hover:underline cursor-pointer">
                 Regístrate
             </a>
-            </p>
-
-            <p className="mt-2 text-xs text-gray-400 text-center">
-            Configuración de cookies
             </p>
         </div>
         </div>

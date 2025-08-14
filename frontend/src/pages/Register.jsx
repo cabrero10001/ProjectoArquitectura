@@ -5,8 +5,7 @@ import axios from 'axios'
 export const Register = () => {
 
     const nav = useNavigate();
-
-
+    
     const [data, setData] = useState({
         Nombre: '',
         Apellido: '',
@@ -16,7 +15,7 @@ export const Register = () => {
         confirmPassword: '',
         numeroDocumento: ''
     });
-
+    const noCoinciden = data.confirmPassword.length > 0 && data.password !== data.confirmPassword
     const handleChange = (e) => {
         setData({
                 ...data,
@@ -40,9 +39,11 @@ export const Register = () => {
             } else {
                 alert("Las contraseñas no coinciden");
             }
-        
+
+            {/*CONFIGURAR EL CATCH*/}
+
         } catch (error) {
-            if (error.response?.status === 500) {
+            if (error.response?.status === 409) {
                 console.log(data);
                 console.log("El usuario ya fue registrado");
                 alert("El usuario ya fue registrado, redirigiendo a Inicio de sesion");
@@ -67,16 +68,16 @@ export const Register = () => {
       {/* Lado izquierdo con imagen */}
         <div className="hidden md:block w-2/3">
         <img
-            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?fit=crop&w=1200&q=80"
+            src="/src/assets/fondo.jpg"
             alt="Fondo"
             className="w-full h-full object-cover"
         />
         </div>
 
       {/* Lado derecho con formulario */}
-        <div className="w-full md:w-1/3 flex items-center justify-center bg-white">
+        <div className="w-full md:w-1/3 flex items-center justify-center bg-white shadow-2xl/20">
         <div className="flex flex-col items-center max-w-md w-full p-8">
-            <h1 className=" text-2xl font-bold mb-6 text-gray-800">
+            <h1 className=" text-4xl font-Newake mb-6 text-gray-800">
             Registrate
             </h1>
 
@@ -86,55 +87,71 @@ export const Register = () => {
                 placeholder="Nombre"
                 onChange={handleChange}
                 name="Nombre"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 outline-none"
             />
             <input
                 type="text"
                 placeholder="Apellido"
                 name="Apellido"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 outline-none"
             />
             <input
                 type="text"
                 placeholder="Numero de documento"
                 name="numeroDocumento"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 outline-none"
             />
             <input
                 type="text"
                 placeholder="Nombre de Usuario"
                 name="userName"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 outline-none"
             />
             <input
                 type="email"
                 placeholder="Correo electrónico"
                 onChange={handleChange}
                 name="email"
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 outline-none"
             />
             <input
                 type="password"
                 placeholder="Contraseña"
                 name="password"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 outline-none"
             />
             <input
                 type="password"
                 placeholder="Confirmar Contraseña"
                 name="confirmPassword"
                 onChange={handleChange}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 outline-none"
             />
+            {noCoinciden && (
+                <div
+                style={{
+                textAlign:"center",
+                background: "#f44336",
+                color: "#fff",
+                padding: "5px 10px",
+                borderRadius: "5px",
+                fontSize: "14px",
+                whiteSpace: "nowrap",
+                boxShadow: "0px 2px 6px rgba(0,0,0,0.2)"
+                }}
+                >
+                    ⚠️ LAS CONTRASEÑAS NO COINCIDEN ⚠️
+                </div>
+            )}
             <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg font-semibold transition"
+                className="w-full bg-gradient-to-br from-blue-600 to-blue-800 hover:scale-105 text-white py-2 rounded-lg font-semibold transition duration-400"
             >
-                Entrar
+                Registrarme
             </button>
             </form>
 

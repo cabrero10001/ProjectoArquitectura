@@ -1,1 +1,11 @@
 @import 'tailwindcss';
+
+
+@theme {
+    --font-Newake: "Newake", sans-serif;
+}
+
+@font-face {
+    font-family: Newake;
+    src: url("src/assets/NewakeFont-Demo.otf");
+}
