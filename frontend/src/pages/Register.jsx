@@ -33,7 +33,7 @@ export const Register = () => {
                 if (respuesta.status === 200) {
                     console.log(data);
                     console.log("registro exitoso");
-                    alert("SESION INICIADA");
+                    alert("USUARIO CREADO");
                     nav("/login");
                 }
             } else {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { toast } from 'react-hot-toast';
+import { motion } from "framer-motion";
 
 const NoteCard = ({ note, onEdit, onDelete }) => {
   return (

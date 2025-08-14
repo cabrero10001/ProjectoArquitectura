@@ -62,7 +62,7 @@ export const Login = () => {
         <div className="w-full md:w-1/3 flex items-center justify-center bg-white shadow-2xl/20">
         <div className="flex flex-col items-center max-w-md w-full p-8">
             <h1 className=" text-4xl font-Newake mb-6 text-gray-800">
-            Inicia sesión
+            Inicia <span className="text-indigo-600">sesión</span>
             </h1>
 
             <form onSubmit={handleSubmit} className="space-y-4 w-full">
